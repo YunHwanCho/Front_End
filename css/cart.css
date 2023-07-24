@@ -1,0 +1,63 @@
+body{
+    margin:0;
+}
+.cart-container{
+    padding-left: 30px;
+    width:80%;
+    max-width:600px;
+    
+    
+}
+
+
+
+td,th{
+    /* border : 1px solid black; */
+    border-radius: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #c2d3de;
+}
+
+table{
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    
+}
+
+img{
+    width:60px;
+    height: 60px;
+}
+
+.pay{
+    float:left;
+    position: relative;
+    top: 10px;
+    left : 35px;
+}
+
+.btn{         /*뼈대 스타일링을 하기 위한 main-btn하나를 만들고 class로 살점을 추가하기*/
+    float: left;
+    position: relative;
+    left:260px;
+    top:10px;
+    width: 200px;
+    height: 50px;
+    background-color: blue;
+    color: white; 
+}
+
+.btn:hover{
+    background-color:chocolate;
+}
+.btn:focus{
+    background-color:yellow;
+}
+
+.btn:active{
+    background-color:red;
+
+}
+
+/* 순서는 hofa~로 외우기*/
