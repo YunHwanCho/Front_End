@@ -1,0 +1,213 @@
+body{
+    margin: 0;
+}
+
+div{
+    box-sizing: border-box;
+}
+.main {
+    background-color: rgb(146, 146, 230);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main1-container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+.main1-container
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.content1 {
+    width: 50%;
+    margin-top: 100px;
+    position: relative;
+    justify-content: flex-start; /* 세로 정렬은 위쪽으로 */
+    align-items: flex-start; /* 가로 정렬은 왼쪽으로 */
+    margin-right: 20px;
+}
+
+
+.content1 h1 {
+    color: white;
+    
+}
+
+.content1 p {
+    color: white;
+   
+}
+.content1 button {
+    color: white;
+    text-align: center; /* 기존 스타일, 텍스트를 가운데 정렬 */
+    
+    top: 20px; /* 아래쪽으로 20px만큼 띄웁니다. */
+    left: 0; /* 왼쪽에 정렬합니다. */
+}
+
+.content1 img {
+    width: 85%;
+    height: 700px; /* 높이를 자동으로 조정하여 이미지 비율을 유지합니다. */
+    display: block;
+    margin: 0 auto; /* 이미지를 가로로 중앙으로 정렬 */
+}
+
+
+.text-1{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.product-container {
+    width:100%;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    
+    margin-top:50px;
+    margin-bottom: 50px;
+    background-color: rgb(146, 146, 230);
+  
+  
+  }
+
+.product-container i{
+    background-color:white;
+    width: 100px;
+    height: 100px;
+    border-radius:50px;
+    padding-left: 5px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    color: rgb(146, 146, 230);
+    
+  
+  }
+
+  .text-2{
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: absolute;
+    top: -80px;
+}
+
+.content2{
+    margin-top: 100px;
+    
+    width:25%;
+    text-align: center;
+    color: white;
+}
+
+.four {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.image-wrap {
+    position: relative;
+}
+
+.image-wrap img {
+    width: 100%;
+    display: block;
+    background-color: rgba(0,0,0,0.3);  
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.img-text {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    color: white;
+}
+
+
+
+.image-wrap::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image-wrap:hover img {
+    transform: scale(0.9);
+}
+.image-wrap:hover .img-responsive::before {
+    opacity: 1;
+}
+
+.icons{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.icons i{
+    color: rgb(146, 146, 230);
+}
+
+.email {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-top:30px;
+  }
+footer{
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:1080px){
+    .content1{
+        width: 100%;
+        text-align: center;
+    }
+    .main1-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .content1 img{
+        width:70%;
+        height: 500px;
+        
+    }
+  }
