@@ -1,0 +1,54 @@
+.white-box{
+    background: white;
+    margin: 100px;
+    padding:100px;
+    border-radius: 5px;
+    box-shadow:0.5px 0.5px 2px 1px #eee;
+}
+.white-box2{
+    background: white;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding:100px;
+    border-radius: 5px;
+    box-shadow:0.5px 0.5px 2px 1px #eee;
+}
+
+.image{
+    width :100px;
+    height: auto;
+    
+
+}
+.name{
+    margin:20px;
+}
+
+.main-container{
+    display: flex;
+    width :100%;
+    height :100%;
+
+}
+
+.left{
+    width :70%;
+    display: flex;
+}
+
+.right{
+    width :30%;
+
+}
+.portfolio1{
+    display: flex;
+
+}
+.text{
+    display: flex;
+
+}
+.inner-text{
+    width:30%;
+    text-align: left;
+}
