@@ -5,19 +5,24 @@ import "./App.css";
 import { useState } from "react";
 function App() {
   let post = "은평 마포 우동 맛집";
+
   let [글제목, 글제목변경] = useState([
     "남자 코트 추천",
     "구두 추천",
     "악세사리 추천",
   ]);
-  let [따봉, 따봉더하기] = useState(0);
+
+  let [따봉, 따봉더하기] = useState([0,0,0]);
+
 
   let [logo, setlogo] = useState("ReactLogo");
   let [cnt, SetCnt] = useState(0);
 
-  function plus() {
-    따봉더하기(따봉 + 1);
-  }
+  let [modal, setModal] = useState(false);
+
+  let[title,setTitle] = useState(0);
+
+
 
   //b는 맞춤 함수
   //변수와 state차이 지속적인 수정에 용의하게 사용 가능함. 자동 랜더링에 용의함.
@@ -56,26 +61,52 @@ function App() {
         내림차순 정렬
       </button>
 
-      <div className="list">
-        <h4>
-          {글제목[0]} <span onClick={plus}>👍</span>
-          {따봉}
-        </h4>
-        <p>2월 17일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{글제목[1]}</h4>
-        <p>2월 17일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{글제목[2]}</h4>
-        <p>2월 17일 발행</p>
-      </div>
 
-      <Modal></Modal>
+      {
+        글제목.map(function(a,i){
+          return (<div className="list" key ={i}>
+          <h4 onClick={()=>{
+          if(cnt == 0){
+            setModal(true);
+            SetCnt(1);
+          }if(cnt == 1){
+            setModal(false);
+            SetCnt(0);
+
+          }
+          setTitle(i)
+         
+        }}>
+            {글제목[i]} <span onClick={()=>{
+              let copy = [...따봉];
+              copy[i] = copy[i]+1;
+              따봉더하기(copy);
+
+            }}>👍</span>
+            {따봉[i]}
+          </h4>
+          <p>2월 17일 발행</p>
+        </div>)
+        })
+      }    
+
+
+
+
+      {
+        modal == true ? <Modal color = "skyblue" 글제목 ={글제목} 글제목변경 ={글제목변경} title = {title} setTitle = {setTitle}/> : null 
+      }
+
+      
+      
     </div>
   );
 }
+
+// 동적인 UI만드는 step
+// 1. html css로 미리 디자인 완성
+// 2. ui의 현재 상태를 state로 저장
+// 3. state에 따라 ui가 어떻게 보일지 작성
 
 // 컴포넌트 사용할 경우
 
@@ -83,13 +114,23 @@ function App() {
 // 2.큰페이지
 // 3.자주변경되는 것들
 
-function Modal() {
+function Modal(props) {
   return (
-    <div className="modal">
-      <h4>제목</h4>
+    <div className="modal" style ={{ background:props.color}}>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button>글수정</button>
     </div>
   );
+}
+//props 사용하기 !!
+
+const Photo =() => {
+  return(
+    <div className="photoSize">
+      <img className = "big" ></img>
+    </div>
+  )
 }
 export default App;
