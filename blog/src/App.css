@@ -60,3 +60,9 @@ div{
   background:#eee;
   text-align: left;
 }
+
+.btn{
+  border-radius:3px;
+
+  background-color: red;
+}

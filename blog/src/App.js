@@ -12,17 +12,16 @@ function App() {
     "악세사리 추천",
   ]);
 
-  let [따봉, 따봉더하기] = useState([0,0,0]);
-
+  let [따봉, 따봉더하기] = useState([0, 0, 0]);
 
   let [logo, setlogo] = useState("ReactLogo");
   let [cnt, SetCnt] = useState(0);
 
   let [modal, setModal] = useState(false);
 
-  let[title,setTitle] = useState(0);
+  let [title, setTitle] = useState(0);
 
-
+  let [입력값, 입력값변경] = useState("");
 
   //b는 맞춤 함수
   //변수와 state차이 지속적인 수정에 용의하게 사용 가능함. 자동 랜더링에 용의함.
@@ -61,44 +60,66 @@ function App() {
         내림차순 정렬
       </button>
 
+      {글제목.map(function (a, i) {
+        return (
+          <div className="list" key={i}>
+            <h4
+              onClick={() => {
+                if (cnt == 0) {
+                  setModal(true);
+                  SetCnt(1);
+                }
+                if (cnt == 1) {
+                  setModal(false);
+                  SetCnt(0);
+                }
+                setTitle(i);
+              }}
+            >
+              {글제목[i]}{" "}
+              <span
+                onClick={() => {
+                  let copy = [...따봉];
+                  copy[i] = copy[i] + 1;
+                  따봉더하기(copy);
+                }}
+              >
+                👍
+              </span>
+              {따봉[i]}
+            </h4>
+            <p>2월 17일 발행</p>
+            <button className="btn" onClick={()=> {
+              let copy = [...글제목];
+              copy.splice(i,1);
+              글제목변경(copy); 
+            }}>삭제</button>
+          </div>
+        );
+      })}
 
-      {
-        글제목.map(function(a,i){
-          return (<div className="list" key ={i}>
-          <h4 onClick={()=>{
-          if(cnt == 0){
-            setModal(true);
-            SetCnt(1);
-          }if(cnt == 1){
-            setModal(false);
-            SetCnt(0);
+      {modal == true ? (
+        <Modal
+          color="skyblue"
+          글제목={글제목}
+          글제목변경={글제목변경}
+          title={title}
+          setTitle={setTitle}
+        />
+      ) : null}
 
-          }
-          setTitle(i)
-         
-        }}>
-            {글제목[i]} <span onClick={()=>{
-              let copy = [...따봉];
-              copy[i] = copy[i]+1;
-              따봉더하기(copy);
-
-            }}>👍</span>
-            {따봉[i]}
-          </h4>
-          <p>2월 17일 발행</p>
-        </div>)
-        })
-      }    
-
-
-
-
-      {
-        modal == true ? <Modal color = "skyblue" 글제목 ={글제목} 글제목변경 ={글제목변경} title = {title} setTitle = {setTitle}/> : null 
-      }
-
-      
-      
+      <input
+        onChange={(e) => {
+          입력값변경(e.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          글제목변경(글제목.concat(입력값));
+        }}
+      >
+        글발행
+      </button>
     </div>
   );
 }
@@ -116,7 +137,7 @@ function App() {
 
 function Modal(props) {
   return (
-    <div className="modal" style ={{ background:props.color}}>
+    <div className="modal" style={{ background: props.color }}>
       <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
@@ -126,11 +147,11 @@ function Modal(props) {
 }
 //props 사용하기 !!
 
-const Photo =() => {
-  return(
+const Photo = () => {
+  return (
     <div className="photoSize">
-      <img className = "big" ></img>
+      <img className="big"></img>
     </div>
-  )
-}
+  );
+};
 export default App;
